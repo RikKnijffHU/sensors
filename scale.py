@@ -71,20 +71,6 @@ if args.configFile:
 
 cfg = scaleConfig.readConfig(configFile)
 
-try:
-        f = open(cfg['raspberryPiConfig']['plotlyCreds'])
-except:
-        print "=========================== ERROR ==========================="
-        print "I couldn't open the file '{0}'".format(plotlyConfigFile)
-        print "to read the plot.ly settings, so I can't make a plot and"
-        print "am giving up."
-        print "(I am:", os.path.abspath(os.path.dirname(sys.argv[0]))+"/"+sys.argv[0],")"
-        print "=========================== ERROR ==========================="
-        exit (1)
-
-plotlyConfig = yaml.safe_load(f)
-f.close()
-
 if args.debug == None:
 	DEBUG = cfg['raspberryPiConfig']['debug']
 else:
@@ -155,9 +141,5 @@ while True:
 														last_read,
 														fsr_change,
 														beans)
-                        scalePlotly.updatePlot (datetime.datetime.now(),
-						beans,
-						plotlyConfig['username'],
-						plotlyConfig['apikey'])
-
+                       
         time.sleep(cfg['raspberryPiConfig']['checkTime'])
