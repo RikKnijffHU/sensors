@@ -83,8 +83,6 @@ import time
 import datetime
 import os
 import RPi.GPIO as GPIO
-import scalePlotly
-
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False) # to stop the "This channel is already in use" warning
